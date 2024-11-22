@@ -89,7 +89,7 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-soft-lavender">
       <div className="max-w-lg w-full bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center text-primary-red mb-6">Register</h2>
+        <h2 className="text-3xl font-bold text-center text-[rgb(194,29,25)] mb-6">Register</h2>
         <form onSubmit={handleRegister}>
           {/* Name Field */}
           <div className="mb-4">
@@ -202,7 +202,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full bg-primary-red text-white py-2 px-4 rounded-lg hover:bg-red-600 transition ${
+            className={`w-full bg-[rgb(194,29,25)] text-white py-2 px-4 rounded-lg hover:bg-red-600 transition ${
               isLoading ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >

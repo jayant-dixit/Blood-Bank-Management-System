@@ -83,7 +83,7 @@ const NearbyPage = () => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="block text-gray-700 font-medium mb-2">Blood Group</label>
             <select
               value={bloodGroup}
@@ -100,12 +100,12 @@ const NearbyPage = () => {
               <option value="O+">O+</option>
               <option value="O-">O-</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="flex items-end">
             <button
               onClick={fetchNearbyEntities}
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+              className="w-full bg-[rgb(190,28,25)] hover:bg-[rgb(194,29,25)] text-white py-2 px-4 rounded"
             >
               {isLoading ? "Searching..." : "Search"}
             </button>

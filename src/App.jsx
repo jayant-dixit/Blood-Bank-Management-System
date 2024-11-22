@@ -9,6 +9,7 @@ import Profile from './Pages/Profile'
 import ScheduleDonation from './Pages/scheduleDonation'
 import NearbyPage from './Pages/NearbyEntities'
 import Admin from './Pages/Admin'
+import Footer from './Components/Footer'
 
 export const Context = createContext({ isAuthenticated: false, isLoading: false })
 
@@ -39,6 +40,8 @@ const App = () => {
         <Route path='/location/nearby' element={<NearbyPage/>}/>
         <Route path='/admin' element={<Admin/>}/>
       </Routes>
+
+      <Footer />
     </Router>
     </Context.Provider>
   )

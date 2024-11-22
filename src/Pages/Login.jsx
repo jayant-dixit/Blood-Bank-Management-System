@@ -54,7 +54,7 @@ const Login = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-soft-lavender">
             <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-                <h2 className="text-3xl font-bold text-center text-primary-red mb-6">Login</h2>
+                <h2 className="text-3xl font-bold text-center text-[rgb(194,29,25)] mb-6">Login</h2>
                 <form onSubmit={handleLogin}>
                     {/* Email Field */}
                     <div className="mb-4">
@@ -96,7 +96,7 @@ const Login = () => {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className={`w-full bg-primary-red text-white py-2 px-4 rounded-lg hover:bg-red-600 transition ${isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                        className={`w-full bg-[rgb(194,29,25)] text-white py-2 px-4 rounded-lg hover:bg-red-600 transition ${isLoading ? 'opacity-50 cursor-not-allowed' : ''
                             }`}
                     >
                         {isLoading ? 'Logging in...' : 'Login'}

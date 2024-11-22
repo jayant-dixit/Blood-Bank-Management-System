@@ -32,124 +32,34 @@ const Navbar = () => {
 
   return (
 
-    <div>
-
-      <nav className="bg-[#3D3BF3] text-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <h1 className="text-xl font-bold">
-                <span className="text-[#EBEAFF]">Rakt</span>
-                <span className="text-[#3D3BF3]">Mitra</span>
-              </h1>
-            </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-6">
-              <a href="#home" className="hover:text-[#EBEAFF] font-medium">
-                Home
-              </a>
-              <a href="#donors" className="hover:text-[#EBEAFF] font-medium">
-                Donors
-              </a>
-              <a href="#bloodbanks" className="hover:text-[#EBEAFF] font-medium">
-                Blood Banks
-              </a>
-              <a href="#about" className="hover:text-[#EBEAFF] font-medium">
-                About Us
-              </a>
-            </div>
-
-            {/* User Actions */}
-            <div className="hidden md:flex items-center space-x-4">
-              {isAuthenticated ? (
-                <button onClick={handleLogout} className="bg-[#4a4a4a] text-white px-4 py-2 rounded-lg hover:bg-[#06060e] ">
-                  Logout
-                </button>
-              ) : (
-                <button onClick={handleLogin} className="bg-[#4a4a4a] text-white px-4 py-2 rounded-lg hover:bg-[#06060e] ">
-                  Login
-                </button>
-              )}
-              <button className="bg-[#FF2929] text-white px-4 py-2 rounded-lg font-bold cursor-pointer hover:bg-[#cc3939]">
-                Need Blood?
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-[#EBEAFF] focus:outline-none"
-              >
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  {isMenuOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16m-7 6h7"
-                    />
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
+    <header className="bg-[rgb(194,29,25)] sticky top-0 left-0 w-full py-4 z-10">
+        <div className="container mx-auto flex justify-between items-center px-6">
+          <a href="/"><h1 className="text-2xl font-bold text-white">RaktMitra</h1></a>
+          <nav className="flex items-center space-x-6">
+            {!isAuthenticated ? (
+              <><button onClick={handleLogin} className="text-white hover:bg-white hover:text-red-600 font-medium w-[6.75rem] text-center m-[5px] p-[7px] rounded-[4px]">
+              Login
+            </button>
+            <button onClick={()=>(navigate("/register"))} className="text-white hover:bg-white hover:text-red-600 font-medium w-[6.75rem] text-center m-[5px] p-[7px] rounded-[4px]">
+              Register
+            </button>
+            </>) : (<><button onClick={handleLogout} className="text-white hover:bg-white hover:text-red-600 font-medium w-[6.75rem] text-center m-[5px] p-[7px] rounded-[4px]">
+              Logout
+            </button>
+            <button onClick={()=>(navigate("/profile"))} className="h-[47px] w-[74px] m-0 text-white hover:text-red-600 font-medium text-center p-[7px] rounded-[4px]">
+              <img className='w-[45px] h-[43px]' src="../../public/assets/user.svg" alt="user" />
+            </button>
+            </>)}
+            
+            <a
+              href="#need-blood"
+              className="bg-yellow-400 text-black hover:bg-white hover:text-red-700 font-semibold py-3 px-6 rounded shadow"
+            >
+              Need Blood
+            </a>
+          </nav>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-[#FF2929]">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <a
-                href="#home"
-                className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#3D3BF3]"
-              >
-                Home
-              </a>
-              <a
-                href="#donors"
-                className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#3D3BF3]"
-              >
-                Donors
-              </a>
-              <a
-                href="#bloodbanks"
-                className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#3D3BF3]"
-              >
-                Blood Banks
-              </a>
-              <a
-                href="#about"
-                className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#3D3BF3]"
-              >
-                About Us
-              </a>
-              <button
-                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-[#3D3BF3] hover:bg-[#9694FF]"
-              >
-                {isAuthenticated ? 'Logout' : 'Login'}
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
-      <ToastContainer />
-    </div>
+      </header>
   );
-};
+};  
 export default Navbar;

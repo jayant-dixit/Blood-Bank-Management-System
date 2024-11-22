@@ -5,6 +5,7 @@ import { Context } from '../App';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import ScheduleDonationCard from '../Components/ScheduledDonations';
+import Carousel from '../Components/Campaign_poster';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -54,32 +55,32 @@ const Profile = () => {
         </div>
 
         {/* Health Points */}
-        <div className="bg-[#4a90e2] rounded-lg shadow p-4 flex justify-between items-center w-64">
-          <h3 className="text-lg font-bold text-[#ffffff]">Health Points</h3>
+        <div className="bg-yellow-400 rounded-lg shadow p-4 flex justify-between items-center w-64">
+          <h3 className="text-lg font-bold text-[rgb(194,29,25)]">Health Points</h3>
           <div className='flex items-center space-x-2'>
-            <span className="text-2xl font-bold text-[#ffffff]">
+            <span className="text-2xl font-bold text-[rgb(194,29,25)]">
               {userData?.rewards?.healthPoints}
             </span>
             <img className='w-7 h-7' src="../../public/assets/heart.png" alt="" />
           </div>
 
         </div>
-        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[#3d3bf3] hover:text-white text-[#3d3bf3] text-lg font-medium">
+        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[rgb(194,29,25)] hover:text-white text-[rgb(194,29,25)] text-lg font-medium">
           Certificates
         </button>
-        <button onClick={()=>{navigate("/scheduleDonation")}} className="w-full text-left py-2 px-4 rounded-lg hover:bg-[#3d3bf3] hover:text-white text-[#3d3bf3] text-lg font-medium">
+        <button onClick={()=>{navigate("/scheduleDonation")}} className="w-full text-left py-2 px-4 rounded-lg hover:bg-[rgb(194,29,25)] hover:text-white text-[rgb(194,29,25)] text-lg font-medium">
           Schedule Donation
         </button>
-        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[#3d3bf3] hover:text-white text-[#3d3bf3] text-lg font-medium">
+        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[rgb(194,29,25)] hover:text-white text-[rgb(194,29,25)] text-lg font-medium">
           Donation History
         </button>
-        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[#3d3bf3] hover:text-white text-[#3d3bf3] text-lg font-medium">
+        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[rgb(194,29,25)] hover:text-white text-[rgb(194,29,25)] text-lg font-medium">
           Blood Requests
         </button>
-        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[#3d3bf3] hover:text-white text-[#3d3bf3] text-lg font-medium">
+        <button className="w-full text-left py-2 px-4 rounded-lg hover:bg-[rgb(194,29,25)] hover:text-white text-[rgb(194,29,25)] text-lg font-medium">
           Chat Support
         </button>
-        <button onClick={()=>{navigate("/location/nearby")}} className="w-full text-left py-2 px-4 rounded-lg hover:bg-[#3d3bf3] hover:text-white text-[#3d3bf3] text-lg font-medium">
+        <button onClick={()=>{navigate("/location/nearby")}} className="w-full text-left py-2 px-4 rounded-lg hover:bg-[rgb(194,29,25)] hover:text-white text-[rgb(194,29,25)] text-lg font-medium">
           Nearby Donors
         </button>
       </div>
@@ -89,6 +90,7 @@ const Profile = () => {
         {/* Carousel for Campaigns */}
         <div className="bg-white rounded-lg shadow p-4">
           <h3 className="text-lg font-bold text-red-600 mb-2">Campaigns</h3>
+          <Carousel/>
           {/* <div className="flex overflow-x-auto space-x-4">
             {campaigns.map((campaign, index) => (
               <div
@@ -160,7 +162,5 @@ const Profile = () => {
       </div>
     </div>
   );
-
-
 };
 export default Profile;
