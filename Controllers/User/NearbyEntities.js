@@ -16,7 +16,7 @@ const getNearbyEntities = async (req, res, next) => {
             coordinates: [parseFloat(longitude), parseFloat(latitude)], // MongoDB requires [longitude, latitude]
         };
 
-        const radiusInMeters = parseInt(radius, 10)*100000; // Convert radius to integer
+        const radiusInMeters = parseInt(radius, 10); // Convert radius to integer
 
         // Donors query using $geoNear
         const donorPipeline = [
@@ -68,7 +68,7 @@ const getNearbyEntities = async (req, res, next) => {
 
         res.status(200).json(ApiResponse.success(200, "Nearby entities fetched successfully", { donors, bloodBanks }));
     } catch (error) {
-        console.error(error);
+        console.error("Error is",error);
         next(new ApiError(500, "Internal Server Error"));
     }
 };
