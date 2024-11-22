@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { Context } from "../App";
 import api from "../services/api";
+import { ToastContainer } from "react-toastify";
 
 // Fix default marker icon for Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -38,7 +39,7 @@ const NearbyPage = () => {
   // Fetch nearby entities
   const fetchNearbyEntities = async () => {
     if (!latitude || !longitude) {
-      alert("Location not available!");
+      toast.error("Location not available!");
       return;
     }
 
@@ -50,12 +51,12 @@ const NearbyPage = () => {
           bloodGroup ? `&bloodGroup=${bloodGroup}` : ""
         }`
       );
-
       setDonors(response.data.data.donors || []);
       setBloodBanks(response.data.data.bloodBanks || []);
     } catch (error) {
+
       console.error("Error fetching data: ", error);
-      alert("Failed to fetch nearby entities!");
+      toast.error("Failed to fetch nearby entities!");
     } finally {
       setIsLoading(false);
     }
@@ -191,6 +192,7 @@ const NearbyPage = () => {
           ))}
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
