@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useCountUp = (target) => {
   const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ const useCountUp = (target) => {
 };
 
 const App = () => {
+  const navigate = useNavigate();
 
   const donorCount = useCountUp(1500);  // Target for donors
   const acceptorCount = useCountUp(500);
@@ -33,12 +35,12 @@ const App = () => {
             <p className="text-white mb-6">
               Join our community of lifesavers and help those in need.
             </p>
-            <a
-              href="#donate"
+            <button
+              onClick={() => navigate("/profile")}
               className="bg-yellow-400 text-black hover:bg-white hover:text-red-700 font-semibold py-3 px-6 rounded shadow"
             >
               Donate Now
-            </a>
+            </button>
           </div>
           <div className="h-[61vh] top-[52px] relative rounded-lg">
             <img

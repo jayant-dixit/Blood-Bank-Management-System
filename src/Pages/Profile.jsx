@@ -110,7 +110,7 @@ const Profile = () => {
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Upcoming Schedules */}
           <div className="bg-white rounded-lg shadow p-4">
-            <h3 className="text-lg font-bold text-[#3d3bf3] mb-2">Upcoming Schedules</h3>
+            <h3 className="text-lg font-bold text-red-600 mb-2">Upcoming Schedules</h3>
             {userData?.donationSchedules.length > 0 ? (
               <ul className="space-y-2">
                 {userData?.donationSchedules?.map((schedule, index) => (
@@ -129,7 +129,7 @@ const Profile = () => {
 
           {/* Donation History */}
           <div className="bg-white rounded-lg shadow p-4">
-            <h3 className="text-lg font-bold text-[#3d3bf3] mb-2">Requests</h3>
+            <h3 className="text-lg font-bold text-red-600 mb-2">Requests</h3>
             {userData?.donationHistory.length > 0 ? (
               <ul className="space-y-2">
                 {userData?.donationHistory.map((history, index) => (

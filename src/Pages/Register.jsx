@@ -74,7 +74,7 @@ const Register = () => {
       setIsLoading(false);
 
       if (response.data.success) {
-        toast.success('Registration successful! Please log in.');
+        toast.success('Registration successfull!!');
         // Redirect to dashboard or clear form
         navigate('/profile');
       } else {

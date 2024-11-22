@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { Context } from "../App";
 import api from "../services/api";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 // Fix default marker icon for Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -51,16 +51,22 @@ const NearbyPage = () => {
           bloodGroup ? `&bloodGroup=${bloodGroup}` : ""
         }`
       );
+      console.log(response.data.data.donors);
       setDonors(response.data.data.donors || []);
       setBloodBanks(response.data.data.bloodBanks || []);
     } catch (error) {
-
       console.error("Error fetching data: ", error);
       toast.error("Failed to fetch nearby entities!");
     } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (latitude && longitude) {
+      fetchNearbyEntities();
+    }
+  }, [latitude, longitude]);
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
@@ -123,7 +129,7 @@ const NearbyPage = () => {
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; OpenStreetMap contributors"
+            attribution="© OpenStreetMap contributors"
           />
           {/* User Location */}
           <Marker position={[latitude, longitude]}>
@@ -134,7 +140,7 @@ const NearbyPage = () => {
           {donors.map((donor, index) => (
             <Marker
               key={`donor-${index}`}
-              position={[donor.location.latitude, donor.location.longitude]}
+              position={[donor.location.coordinates[1], donor.location.coordinates[0]]}
             >
               <Popup>
                 <div>
@@ -195,6 +201,6 @@ const NearbyPage = () => {
       <ToastContainer/>
     </div>
   );
-};
+};  
 
 export default NearbyPage;
