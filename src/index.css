@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.navbar {
+  background: linear-gradient(to right, #4A90E2, #50E3C2);
+  color: #FFFFFF;
+}
+
+.side-panel {
+  background: linear-gradient(to bottom, #F5F5F5, #FFFFFF);
+  color: #4A4A4A;
+}
+
+.button-primary {
+  background: linear-gradient(to bottom, #D0021B, #9B0014);
+  color: #FFFFFF;
+}
+
+.button-secondary {
+  background: linear-gradient(to bottom, #50E3C2, #3BAF9C);
+  color: #FFFFFF;
+}
+.gradient-blur {
+  background: linear-gradient(135deg, #9694FF, #EBEAFF);
+  /* border-radius: 20px; */
+  filter: blur(10px);
+  /* box-shadow: 
+    0 4px 10px rgba(150, 148, 255, 0.4), 
+    0 10px 20px rgba(235, 234, 255, 0.6); */
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+}
+
