@@ -5,15 +5,21 @@ const bloodBankSchema = new mongoose.Schema({
     name: { type: String, required: true },
     location: {
         type: {
-            type: String, // GeoJSON type
-            enum: ["Point"],
-            default: "Point"
+          latitude: {
+            type: Number,
+            required: true,
+          },
+          longitude: {
+            type: Number,
+            required: true,
+          },
         },
-        coordinates: [Number], // [longitude, latitude]
-    },
+        required: true,
+      },
     contactNumber: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     bloodBankId: { type: String, required: true, unique: true },
+    password: {type: String, required: true},
 
     // Blood Inventory (tracked by blood group)
     bloodInventory: {
@@ -31,7 +37,7 @@ const bloodBankSchema = new mongoose.Schema({
     requestHistory: [
         {
             acceptorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to Acceptor
-            bloodGroup: { type: String, required: true },
+            bloodGroupRequest: { type: String, required: true },
             requestDate: { type: Date, default: Date.now },
             urgencyLevel: { type: String, enum: ['Normal', 'Urgent', 'Critical'], default: 'Normal' },
             status: { type: String, enum: ['Pending', 'Fulfilled', 'Rejected'], default: 'Pending' },
@@ -44,10 +50,12 @@ const bloodBankSchema = new mongoose.Schema({
     scheduledDonations: [
         {
             donorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Donor ID
-            bloodGroupRequired: { type: String, required: true },
+            bloodGroup: { type: String, required: true },
             scheduledDate: { type: Date, required: true },
+            scheduledTime: { type: String, required: true },
             urgencyLevel: { type: String, enum: ['Normal', 'Urgent', 'Critical'], default: 'Normal' },
             donationStatus: { type: String, enum: ['Scheduled', 'Completed', 'Cancelled'], default: 'Scheduled' },
+            notes: { type: String },
         }
     ],
 },{timestamps:true});

@@ -1,9 +1,15 @@
+import User from "../../models/user.model.js";
 import ApiResponse from "../../utils/ApiResponse.js";
 
 
 const profile = async (req, res, next) => {
   try {
-    const user = req.user;
+    const {_id} = req.user;
+
+    const user = await User.findById(_id).populate({
+      path: "donationSchedules.bloodBankId",
+      select: "name location"
+    });
 
     if(!user) {
       return res.status(404).json(ApiResponse.error(404, "User not found"));

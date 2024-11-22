@@ -6,6 +6,7 @@ import isLoggedIn from "../middlewares/isLoggedin.js";
 import profile from "../Controllers/User/profile.js";
 import donationHistory from "../Controllers/donation/donationHistory.js";
 import donationSchedule from "../Controllers/donation/donationSchedule.js";
+import getNearbyEntities from "../Controllers/User/NearbyEntities.js";
 
 
 const router = Router();
@@ -16,6 +17,8 @@ router.get('/logout', logoutUser);
 router.get('/profile', isLoggedIn, profile);
 router.get('/donationHistory', isLoggedIn, donationHistory);
 router.post('/donationSchedule', isLoggedIn, donationSchedule);
+router.get('/location/nearby', isLoggedIn, getNearbyEntities);
+
 
 
 export default router;

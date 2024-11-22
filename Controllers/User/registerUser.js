@@ -28,7 +28,9 @@ const registerUser = async (req, res, next) => {
             contact,
             bloodGroup,
             gender,
-            location,
+            location: {type: "Point",
+                coordinates: [location.longitude, location.latitude]
+            },
         });
 
         const token = jwt.sign({email: newUser.email}, process.env.JWT_SECRET, {expiresIn: "1d"});

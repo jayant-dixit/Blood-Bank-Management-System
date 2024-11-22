@@ -9,13 +9,9 @@ const userSchema = new mongoose.Schema({
     bloodGroup: { type: String, required: true }, // E.g., A+, B+, O-, etc.
     gender: { type: String, enum: ['Male', 'Female', 'Other'], required: true },
     location: {
-        type: {
-            type: String, // GeoJSON type
-            enum: ["Point"],
-            default: "Point"
-        },
-        coordinates: [Number], // [longitude, latitude]
-    },
+        type: { type: String, enum: ["Point"], required: true, default: "Point" },
+        coordinates: { type: [Number], required: true }, // [longitude, latitude]
+      },
 
     // Proof of Blood Group (document or image)
     bloodGroupProof: {
@@ -38,6 +34,7 @@ const userSchema = new mongoose.Schema({
             date: { type: Date },
             bloodGroup: { type: String },
             location: { type: String }, // Donor's location when donating
+            bloodBankId: {type: mongoose.Schema.Types.ObjectId, ref: 'BloodBank'},
             status: { type: String, enum: ['Successful', 'Failed'], default: 'Successful' },
         }
     ],
